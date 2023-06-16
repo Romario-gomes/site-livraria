@@ -1,18 +1,9 @@
+import React, { useContext } from "react";
 import { Header } from "../Header";
 import { SearchForm } from "../SearchForm";
-import { Container, ViewBookButton, RemoveBookButton, Title } from "./styles";
-import { Eye, Trash } from "phosphor-react";
-import * as Dialog from "@radix-ui/react-dialog";
-import { ViewBookModal } from "../ViewBookModal";
-import { useContext } from "react";
+import { Container, Title } from "./styles";
 import { BookContext } from "../../Context/BookContext";
-
-export interface IBookType {
-  title: string;
-  author: string;
-  description: string;
-  category: string;
-}
+import { BookItem } from "../BookItem";
 
 export function BookList() {
   const context = useContext(BookContext);
@@ -40,31 +31,12 @@ export function BookList() {
       <Container>
         <SearchForm />
         {filteredBooks.length === 0 ? (
-          <p>Nenhum livro Encontrado.</p>
+          <p>Nenhum livro encontrado.</p>
         ) : (
           <table>
             <tbody>
               {filteredBooks.map((book, index) => (
-                <tr key={index}>
-                  <td width="40%">{book.title}</td>
-                  <td width="30%">{book.author}</td>
-                  <td width="20%">{book.category}</td>
-                  <td>
-                    <Dialog.Root>
-                      <Dialog.Trigger asChild>
-                        <ViewBookButton type="button">
-                          <Eye size={24} />
-                        </ViewBookButton>
-                      </Dialog.Trigger>
-                      <ViewBookModal title={book.title}/>
-                    </Dialog.Root>
-                  </td>
-                  <td>
-                    <RemoveBookButton onClick={() => removeBook(index)}>
-                      <Trash size={24}/>
-                    </RemoveBookButton>
-                  </td>
-                </tr>
+                <BookItem key={index} book={book} index={index} removeBook={removeBook} />
               ))}
             </tbody>
           </table>

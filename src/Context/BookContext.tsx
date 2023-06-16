@@ -11,7 +11,7 @@ export type BookContextType = {
   books: Book[];
   addBook: (newBook: Book) => void;
   removeBook: (index: number) => void;
-  filterBooksByTitleOrAuthor(value: any): void;
+  filterBooksByTitleOrAuthor(value: string): void;
   searchText: string;
   setSearchText: (text: string) => void;
 };
@@ -66,7 +66,7 @@ export function BookProvider({ children }: BookProviderProps) {
     setBooks(updatedBooks);
   };
 
-  const filterBooksByTitleOrAuthor = (value: any) => {
+  const filterBooksByTitleOrAuthor = (value: string) => {
     const filteredBooks = books.filter((book) => {
       const titleMatch = book.title.toLowerCase().includes(value.toLowerCase());
       const authorMatch = book.author.toLowerCase().includes(value.toLowerCase());

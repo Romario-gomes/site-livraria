@@ -13,13 +13,20 @@ export function NewBookModal() {
 
   const { addBook } = context;
 
-  const handleSubmit = (event: any) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    const title = event.target.title.value;
-    const author = event.target.author.value;
-    const description = event.target.description.value;
-    const category = event.target.category.value;
+    const form = event.target as HTMLFormElement;
+    const target = event.target as typeof event.target & {
+      title: { value: string };
+      author: { value: string };
+      description: { value: string };
+      category: { value: string };
+    };
+  
+    const title = target.title.value;
+    const author = target.author.value;
+    const description = target.description.value;
+    const category = target.category.value;
 
     const newBook = {
       title,
@@ -29,7 +36,7 @@ export function NewBookModal() {
     };
 
     addBook(newBook);
-    event.target.reset();
+    form.reset();
   };
 
   return (

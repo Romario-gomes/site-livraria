@@ -27,13 +27,12 @@ export function ViewBookModal ({ title }: IViewModalProps) {
         </CloseButton>
   
         <Dialog.Title>Detalhes do livro</Dialog.Title>
-          <form action="">
+          <div>
             <input type="text" placeholder="titulo" value={bookDetails?.title} readOnly />
             <input type="text" placeholder="autor" value={bookDetails?.author} readOnly/>
             <textarea placeholder="descrição" value={bookDetails?.description} readOnly/>
             <input type="text" placeholder="categoria" value={bookDetails?.category} readOnly/>
-
-          </form>
+          </div>
       </Content>
     </Dialog.Portal>
   )

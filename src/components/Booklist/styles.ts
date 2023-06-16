@@ -4,7 +4,6 @@ export const Container = styled.div`
   max-width: 1120px;
   margin: 4rem auto 0;
 
-
   p {
     margin-top: 2rem;
   }
@@ -49,21 +48,7 @@ export const Container = styled.div`
  
 `;
 
-export const ViewBookButton = styled.button`
-  background: transparent;
-  border: 0;
-  line-height: 0;
-  cursor: pointer;
-  color: var(--text-body);
-`
 
-export const RemoveBookButton = styled.button`
-  background: transparent;
-  border: 0;
-  line-height: 0;
-  cursor: pointer;
-  color: var(--text-body);
-`
 
 export const Title = styled.div`
   max-width: 1120px;

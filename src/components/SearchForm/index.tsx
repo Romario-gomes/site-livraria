@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { SearchFormContainer } from "./styles";
 import { MagnifyingGlass } from "phosphor-react";
 import { BookContext } from "../../Context/BookContext";
